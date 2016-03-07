@@ -1,0 +1,38 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+var program = require('commander');
+
+program
+  .version('0.0.9')
+  .option('-t, --type [type]', 'package type ', 'local')
+  .command('install <location>')
+  .action(function (location) {
+    console.log('install a %s package at %s', program.type, location);
+    switch (program.type) {
+      case 'local':
+        break;
+      case 'git':
+        break;
+      case 'zip':
+        break;
+      default:
+        break;
+    }
+  });
+
+program.on('--help', function(){
+  console.log('  Examples:');
+  console.log('');
+  console.log('    $ node hdb --help');
+  console.log('    $ node hdb install -t [local|git|zip] <location>');
+  console.log('');
+});
+program.parse(process.argv);
+
+if (!process.argv.slice(2).length) {
+  program.outputHelp();
+}

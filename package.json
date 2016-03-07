@@ -1,0 +1,26 @@
+{
+  "name": "hdb",
+  "version": "0.0.9",
+  "description": "haibu debug tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsli/hdb.git"
+  },
+  "dependencies": {
+    "commander": "2.9.0"
+  },
+  "keywords": [
+    "haibu",
+    "debug"
+  ],
+  "author": "Manson Li <manson.li3307@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/jsli/hdb/issues"
+  },
+  "homepage": "https://github.com/jsli/hdb#readme"
+}

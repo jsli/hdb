@@ -2,6 +2,7 @@
 
 var program = require('commander');
 var shell = require('shelljs');
+var path = require('path');
 var HDB = require('../index');
 
 program
@@ -14,8 +15,13 @@ program
       console.error('Sorry, this script requires adb');
       shell.exit(1);
     }
+    var options = {
+      'type': program.type,
+      'location': location
+    };
     switch (program.type) {
       case 'local':
+        options.name = path.basename(location);
         break;
       case 'git':
         // check git
@@ -30,10 +36,7 @@ program
         break;
     }
 
-    HDB.run({
-      'type': program.type,
-      'location': location
-    });
+    HDB.run(options);
   });
 
 program.on('--help', function(){

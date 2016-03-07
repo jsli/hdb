@@ -49,7 +49,8 @@ function LocalRunnable(hdb) {
 }
 
 LocalRunnable.prototype.run = function(options) {
-  var cmd = 'adb push ' + options.location + ' ' + HAIBU_PATH_ON_DEVICE;
+  var cmd = 'adb push ' + options.location + ' ' +
+    HAIBU_PATH_ON_DEVICE + options.name;
   if (shell.exec(cmd).code !== 0) {
     console.error('Error: Push app failed');
     shell.exit(1);
@@ -72,7 +73,8 @@ GitRunnable.prototype.run = function(options) {
   } else {
     new LocalRunnable().run({
       type: 'local',
-      location: this.hdb.pkgDir + appName
+      location: this.hdb.pkgDir + appName,
+      name: appName
     });
   }
 };

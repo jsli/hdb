@@ -2,7 +2,7 @@ var fs = require('fs');
 var path = require('path');
 var shell = require('shelljs');
 
-const HAIBU_PATH_ON_DEVICE = '/data/local/haibu/';
+const HAIBU_PATH_ON_DEVICE = '/data/local/haibu/apps/';
 
 /**
  * Expose the root HDB.

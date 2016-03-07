@@ -1,34 +1,46 @@
 #!/usr/bin/env node
 
-/**
- * Module dependencies.
- */
-
 var program = require('commander');
+var shell = require('shelljs');
+var HDB = require('../index');
 
 program
   .version('0.0.9')
   .option('-t, --type [type]', 'package type ', 'local')
   .command('install <location>')
   .action(function (location) {
-    console.log('install a %s package at %s', program.type, location);
+    // check adb
+    if (!shell.which('adb')) {
+      console.error('Sorry, this script requires adb');
+      shell.exit(1);
+    }
     switch (program.type) {
       case 'local':
         break;
       case 'git':
-        break;
-      case 'zip':
+        // check git
+        if (!shell.which('git')) {
+          console.error('Sorry, this script requires git');
+          shell.exit(1);
+        }
         break;
       default:
+        console.error('Sorry, illegal type');
+        shell.exit(1);
         break;
     }
+
+    HDB.run({
+      'type': program.type,
+      'location': location
+    });
   });
 
 program.on('--help', function(){
   console.log('  Examples:');
   console.log('');
   console.log('    $ node hdb --help');
-  console.log('    $ node hdb install -t [local|git|zip] <location>');
+  console.log('    $ node hdb install -t [local|git] <location>');
   console.log('');
 });
 program.parse(process.argv);

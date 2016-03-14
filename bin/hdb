@@ -36,7 +36,7 @@ program
         break;
     }
 
-    HDB.run(options);
+    HDB.install(options);
   });
 
 program.on('--help', function(){

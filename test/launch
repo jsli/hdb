@@ -1,0 +1,1 @@
+./bin/hdb launch -u manson -n lighter -a 10.1.10.57 /data/local/haibu/apps/lighter

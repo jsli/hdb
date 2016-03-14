@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "commander": "2.9.0",
-    "shelljs": "0.6.0"
+    "shelljs": "0.6.0",
+    "haibu": "0.10.3"
   },
   "keywords": [
     "haibu",

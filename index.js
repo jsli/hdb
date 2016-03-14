@@ -1,9 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var shell = require('shelljs');
-var installer = require('lib/install');
-
-const HAIBU_PATH_ON_DEVICE = '/data/local/haibu/apps/';
+var installer = require('./lib/install');
 
 /**
  * Expose the root HDB.

@@ -2,6 +2,7 @@ var fs = require('fs');
 var path = require('path');
 var shell = require('shelljs');
 var installer = require('./lib/install');
+var launcher = require('./lib/launcher');
 
 /**
  * Expose the root HDB.
@@ -41,4 +42,8 @@ HDB.prototype.install = function(options) {
     case 'zip':
       break;
   }
+};
+
+HDB.prototype.launch = function(server, app) {
+  return new launcher.Launcher().launch(server, app);
 };

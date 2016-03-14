@@ -5,6 +5,7 @@ var shell = require('shelljs');
 var path = require('path');
 var HDB = require('../index');
 
+// install function
 program
   .version('0.0.9')
   .option('-t, --type [type]', 'package type ', 'local')
@@ -39,11 +40,41 @@ program
     HDB.install(options);
   });
 
+// launch function
+program
+  .option('-a, --address [address]', 'address', '127.0.0.1')
+  .option('-p, --port [port]', 'port', '9002')
+  .option('-u, --user [user]', 'user', 'default')
+  .option('-n, --name [name]', 'name', 'default')
+  .option('-s, --script [script]', 'script to launch', 'index.js')
+  .command('launch <location>')
+  .action(function (location) {
+    var server = {
+      address: program.address,
+      port: program.port
+    },
+
+    app = {
+      user: program.user,
+      name: program.name,
+      repository: {
+        type: 'local',
+        directory: location
+      },
+      scripts: {
+        start: program.script
+      }
+    };
+
+    HDB.launch(server, app);
+  });
+
 program.on('--help', function(){
   console.log('  Examples:');
   console.log('');
   console.log('    $ node hdb --help');
   console.log('    $ node hdb install -t [local|git] <location>');
+  console.log('    $ node hdb luanch -u [user] -n [name] <location>');
   console.log('');
 });
 program.parse(process.argv);
